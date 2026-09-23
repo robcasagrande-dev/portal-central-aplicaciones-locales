@@ -1,0 +1,45 @@
+http://192.168.10.168 {
+    # 1. New Portal at Root
+    handle_path / {
+        root * /var/www/portal-central-aplicaciones-locales/dist
+        file_server
+        # Note: If running via Docker, reverse proxy to the container port (e.g. reverse_proxy portal-central:4321)
+    }
+
+    # 2. KaliClock
+    handle_path /kaliclock/* {
+        reverse_proxy 127.0.0.1:5050 {
+            header_up X-Forwarded-Prefix /kaliclock
+        }
+    }
+    
+    # 3. Voltage Logger (Assuming running on port 5001 or statically served)
+    handle_path /voltage/* {
+        # Modify to point to the actual VoltageLogger port or static dir
+        reverse_proxy 127.0.0.1:5001 
+        # root * /var/www/VoltageLogger
+        # file_server
+    }
+
+    # 4. UPS Dashboard
+    handle_path /ups/* {
+        reverse_proxy 127.0.0.1:5000
+    }
+
+    # 5. Omada Backups (FTP)
+    handle_path /omada-backups/* {
+        root * /var/www/Omada_Backups
+        file_server browse
+    }
+
+    # 6. Portal Wi-Fi (omada-wifi container)
+    handle_path /wifi-portal/* {
+        reverse_proxy 127.0.0.1:8000
+    }
+
+    # 7. Video Safebox
+    handle_path /video-safebox/* {
+        root * /var/www/Video_Safebox
+        file_server browse
+    }
+}

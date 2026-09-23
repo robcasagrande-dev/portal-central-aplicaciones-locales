@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+import services from '../data/services.config.json';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Kali Hotels - Portal Central</title>
+    
+    <!-- SVG Gradient Definition for Icons -->
+    <svg width="0" height="0" style="position: absolute;">
+      <defs>
+        <linearGradient id="accent-gradient-svg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#38bdf8" />
+          <stop offset="100%" stop-color="#3b82f6" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 12l10 10 10-10L12 2zm0 14.5L7.5 12 12 7.5 16.5 12 12 16.5z"/>
+        </svg>
+      </div>
+      <h1>Kali Hotels</h1>
+      <div class="badge">Portal Central de Aplicaciones Locales</div>
+    </header>
+
+    <main class="grid">
+      {services.map((service) => (
+        <a href={service.path} class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d={service.icon} />
+            </svg>
+          </div>
+          <h2>{service.title}</h2>
+          <p>{service.description}</p>
+        </a>
+      ))}
+    </main>
+  </body>
+</html>
