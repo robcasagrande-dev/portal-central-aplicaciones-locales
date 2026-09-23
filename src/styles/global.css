@@ -6,11 +6,11 @@
   --text-secondary: #94a3b8;
   --card-bg: rgba(30, 41, 59, 0.7);
   --card-border: rgba(255, 255, 255, 0.05);
-  --card-hover-border: rgba(56, 189, 248, 0.5);
-  --accent-color: #38bdf8;
-  --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
-  --badge-bg: rgba(56, 189, 248, 0.1);
-  --badge-text: #38bdf8;
+  --card-hover-border: rgba(52, 211, 153, 0.5);
+  --accent-color: #34d399;
+  --accent-gradient: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  --badge-bg: rgba(52, 211, 153, 0.1);
+  --badge-text: #34d399;
 }
 
 * {
@@ -23,8 +23,8 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
   background-image: 
-    radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.05), transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+    radial-gradient(circle at 15% 50%, rgba(52, 211, 153, 0.05), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.05), transparent 25%);
   color: var(--text-primary);
   min-height: 100vh;
   display: flex;
@@ -126,7 +126,7 @@ h1 {
 .card:hover {
   transform: translateY(-4px);
   border-color: var(--card-hover-border);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(52, 211, 153, 0.1);
 }
 
 .card:hover::before {
