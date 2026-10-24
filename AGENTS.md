@@ -85,3 +85,15 @@ The owner moves between Claude Code and Google Antigravity, often mid-task when 
 - **While working**: work on a feature branch, commit after each working step and push the branch, so a sudden usage limit never strands work. Work in a Claude Code cloud session only reaches the owner's computer once it is pushed.
 - **Handing off (`/handoff`)**: do the Session End steps above, commit, push the branch, and end with the branch name and the next step in one or two lines.
 - A missing `PROJECT_CONTEXT.md` is created at the first handoff with these sections: `## Overview` (what the project is, stack, how to run, test and deploy), `## Handoff notes`, `## Changelog` (newest first).
+
+## Handoff for Antigravity (2026-10-18)
+
+_Written by Claude Code on 2026-10-18 from the code, the workspace audit, `git log` and read-only checks of the EliteDesk. There is no `PROJECT_CONTEXT.md`, so the `@PROJECT_CONTEXT.md` line above loads nothing; this file is the reference. **The "Deployment Procedure" section above is obsolete: don't run it** (it targets the retired SmartCheckInSuite container on the EliteDesk and hardcodes `/home/robcasagrande/...`)._
+
+- **What it is:** an Astro 7 version of "Portal Central", the LAN start page that links the local Villa Maria apps (KaliClock, voltage dashboards, UPS panel, Video Safebox, Omada backups). **Public repository**: never put hostnames with credentials, passwords or internal secrets here.
+- **Layout:** `src/pages/index.astro` (the whole page), `public/` (favicons), `Caddyfile.snippet` (matches no deployed config), `.nvmrc` = 22. README is Astro starter text.
+- **Run and test:** `npm ci && npm run build`, `npm run dev`. No tests.
+- **Deploy:** none. The page that is actually served at `http://100.98.28.34/` (EliteDesk, over Tailscale) is the hand-written `../villamaria-edge/portal/index.html`, deployed by `villamaria-edge/deploy.sh`. This repo is not its source.
+- **Servers and secrets:** none.
+- **State on 2026-10-18:** dormant since 2026-09-23 (two code commits). The live portal answers 200 from villamaria-edge.
+- **Open work (owner decision):** either make this repo the source of the villamaria-edge portal (build it and copy `dist/` into `villamaria-edge/portal/`), or archive it. Until then, change the live portal in villamaria-edge.
